@@ -5,11 +5,11 @@ whole_set <- read.table(unz(temp, "household_power_consumption.txt"),header=TRUE
 unlink(temp)
 
 #subset the dataset to keep given two days of data only 
-two_days_set <- whole_set[whole_set$Date %in% c("2/1/2007","2/2/2007"),]
+two_days_set <- whole_set[whole_set$Date %in% c("1/2/2007","2/2/2007"),]
 
 #prepare the data
 timedata_raw <- paste(two_days_set$Date,two_days_set$Time)
-timedata <- strptime(timedata_raw, format = "%m/%d/%Y %H:%M:%S")
+timedata <- strptime(timedata_raw, format = "%d/%m/%Y %H:%M:%S")
 two_days_set$Global_active_power <- as.numeric(two_days_set$Global_active_power)
 
 #plot the graph

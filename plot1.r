@@ -5,13 +5,13 @@ whole_set <- read.table(unz(temp, "household_power_consumption.txt"),header=TRUE
 unlink(temp)
 
 #subset the dataset to keep given two days of data only 
-two_days_set <- whole_set[whole_set$Date %in% c("2/1/2007","2/2/2007"),]
+two_days_set <- whole_set[whole_set$Date %in% c("1/2/2007","2/2/2007"),]
 
 #prepare the vector to plot
 data_to_plot <- as.numeric(two_days_set$Global_active_power[!two_days_set$Global_active_power=="?"])
 
 #plot the histogram
-hist(data_to_plot, breaks=seq(0,6,l=13), col = "red",main = "Global Active Power",xlab = "Global Active Power (kilowatts)")
+hist(data_to_plot, col = "red",main = "Global Active Power",xlab = "Global Active Power (kilowatts)")
 
 #output the plot to .png file
 dev.copy(device=png,filename="plot1.png")
